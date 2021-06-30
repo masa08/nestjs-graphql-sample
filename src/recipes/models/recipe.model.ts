@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 
+// 記述に従ってスキーマが自動生成される
 @ObjectType()
 export class Recipe {
   @Field((type) => ID)

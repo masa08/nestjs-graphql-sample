@@ -8,22 +8,18 @@ import { RecipesService } from './recipes.service';
 
 const pubSub = new PubSub();
 
+// QueryおよびMutationはここで記述
+// 記述に従ってスキーマが自動生成される
 @Resolver((of) => Recipe)
 export class RecipesResolver {
   constructor(private readonly recipesService: RecipesService) {}
 
   @Query((returns) => Recipe)
   async recipe(@Args('id') id: string): Promise<Recipe> {
-    // const recipe = await this.recipesService.findOneById(id);
-    // if (!recipe) {
-    //   throw new NotFoundException(id);
-    // }
-    const recipe = {
-      id: 'hoge',
-      title: 'title',
-      creationDate: new Date(),
-      ingredients: [],
-    };
+    const recipe = await this.recipesService.findOneById(id);
+    if (!recipe) {
+      throw new NotFoundException(id);
+    }
     return recipe;
   }
 

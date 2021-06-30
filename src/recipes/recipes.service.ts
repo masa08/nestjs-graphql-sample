@@ -16,7 +16,13 @@ export class RecipesService {
   }
 
   async findOneById(id: string): Promise<Recipe> {
-    return {} as any;
+    const recipe = {
+      id: 'hoge',
+      title: 'title',
+      creationDate: new Date(),
+      ingredients: [],
+    };
+    return recipe;
   }
 
   async findAll(recipesArgs: RecipesArgs): Promise<Recipe[]> {
